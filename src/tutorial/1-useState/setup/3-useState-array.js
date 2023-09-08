@@ -1,31 +1,36 @@
-import React from "react";
-import { data } from "../../../data";
+import React from 'react';
+import { useState } from 'react';
+import { data } from '../../../data';
 
 const UseStateArray = () => {
-  const [people, setPeople] = React.useState(data);
-  const handleRemovePerson = (id) => {
-    // const newPeople = people.filter((person) => person.id !== personId);
+  const [people, setPeople] = useState(data);
+  const removeItem = (id) => {
+    // let newPeople = people.filter((person) => person.id !== id);
     // setPeople(newPeople);
-    // Better way with Functional approch
     setPeople((oldPeople) => {
-      const newPeople = oldPeople.filter((person) => person.id !== id);
+      let newPeople = oldPeople.filter((person) => person.id !== id);
       return newPeople;
     });
   };
+
   return (
     <>
       {people.map((person) => {
-        let { id, name } = person;
+        const { id, name } = person;
         return (
-          <div key={id} className="item">
+          <div key={id} className='item'>
             <h4>{name}</h4>
-            <button className="btn" onClick={() => handleRemovePerson(id)}>
-              Remove
+            <button
+              type='button'
+              className='btn'
+              onClick={() => removeItem(id)}
+            >
+              remove
             </button>
           </div>
         );
       })}
-      <button className="btn" onClick={() => setPeople([])}>
+      <button type='button' className='btn' onClick={() => setPeople([])}>
         Clear items
       </button>
     </>

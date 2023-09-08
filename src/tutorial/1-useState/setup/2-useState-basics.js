@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const UseStateBasics = () => {
-  // console.log(useState("Hello!!"));
-  // const value = useState(1)[0];
-  // const handler = useState(1)[1];
-  // console.log(value, handler);
-  const randomText = "Random title";
-  const [text, setText] = useState(randomText);
-  const handleClick = () => {
-    // Same result as below and more compact
-    text === randomText ? setText("Hello World") : setText(randomText);
+  const [title, setTitle] = useState('random Title');
 
-    // if (text === randomText) {
-    //   setText("Hello World");
+  const handleClick = () => {
+    // if (title === 'random title') {
+    //   setTitle('hello world');
     // } else {
-    //   setText(randomText);
+    //   setTitle('random title');
     // }
+
+    // More consice
+    title === 'random title'
+      ? setTitle('hello world')
+      : setTitle('random title');
   };
+
   return (
-    <React.Fragment>
-      <h1>{text}</h1>
+    <>
+      <h2>{title}</h2>
       <button type="button" className="btn" onClick={handleClick}>
         Change title
       </button>
-    </React.Fragment>
+    </>
   );
 };
 

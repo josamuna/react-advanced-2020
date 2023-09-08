@@ -1,20 +1,19 @@
-import React from "react";
+import React from 'react';
 
 const ErrorExample = () => {
-  let title = "random title";
+  let title = 'My random title';
 
   const handleClick = () => {
-    // We change the title value but we not re-render the component to trigger the value change
-    title = "Hello people";
+    title = 'New value for title';
     console.log(title);
   };
   return (
-    <React.Fragment>
+    <div>
       <h2>{title}</h2>
       <button type="button" className="btn" onClick={handleClick}>
         Change title
       </button>
-    </React.Fragment>
+    </div>
   );
 };
 
