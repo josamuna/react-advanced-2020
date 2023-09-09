@@ -7,8 +7,6 @@ import React, { useState } from 'react';
 // dynamic object keys
 
 const ControlledInputs = () => {
-  // const [firstName, setFirstName] = useState('');
-  // const [email, setEmail] = useState('');
   const [formInput, setFormInput] = useState({
     id: '',
     firstName: '',
@@ -22,17 +20,14 @@ const ControlledInputs = () => {
 
     if (formInput.firstName && formInput.email && formInput.age) {
       const newPerson = { ...formInput, id: new Date().getTime().toString() };
+      // setPeople((oldPeople) => {
+      //   return [...oldPeople, newPerson];
+      // });
       setPeople([...people, newPerson]);
       setFormInput({ firstName: '', email: '', age: '' });
     } else {
       console.log('Empty values');
     }
-  };
-
-  const handleFormChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormInput({ ...formInput, [name]: value });
   };
 
   return (
@@ -46,7 +41,9 @@ const ControlledInputs = () => {
               name='firstName'
               id='firstName'
               value={formInput.firstName}
-              onChange={handleFormChange}
+              onChange={(e) =>
+                setFormInput({ ...formInput, firstName: e.target.value })
+              }
             />
           </div>
           <div className='form-control'>
@@ -56,7 +53,9 @@ const ControlledInputs = () => {
               name='email'
               id='email'
               value={formInput.email}
-              onChange={handleFormChange}
+              onChange={(e) =>
+                setFormInput({ ...formInput, email: e.target.value })
+              }
             />
           </div>
           <div className='form-control'>
@@ -66,7 +65,9 @@ const ControlledInputs = () => {
               name='age'
               id='age'
               value={formInput.age}
-              onChange={handleFormChange}
+              onChange={(e) =>
+                setFormInput({ ...formInput, age: e.target.value })
+              }
             />
           </div>
           <button type='button' onClick={submitData}>
