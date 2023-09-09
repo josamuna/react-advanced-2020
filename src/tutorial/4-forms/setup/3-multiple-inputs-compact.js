@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 // value, onChange
 // dynamic object keys
 
+// New way to use inputs
 const ControlledInputs = () => {
   const [formInput, setFormInput] = useState({
     id: '',
